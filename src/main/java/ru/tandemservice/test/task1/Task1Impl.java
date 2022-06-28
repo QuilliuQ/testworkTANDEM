@@ -48,16 +48,11 @@ public class Task1Impl implements IStringRowsListSorter {
          */
 
         private String[] getSubStrings(String input){
-            if(input.chars().allMatch(Character::isLetter))
-            {
-                return new String[]{input};
-            }
             List<String> tempList = new ArrayList<>();
-            Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z]+)");
+            Pattern pattern = Pattern.compile("\\d+|[a-zA-Z]+");
             Matcher matcher = pattern.matcher(input);
             while (matcher.find()) {
-                tempList.add(matcher.group(1));
-                tempList.add(matcher.group(2));
+                tempList.add(matcher.group(0));
             }
             return tempList.toArray(new String[tempList.size()]);
         }
@@ -74,13 +69,12 @@ public class Task1Impl implements IStringRowsListSorter {
             String[] first = getSubStrings(firstValue);
             String[] second = getSubStrings(secondValue);
             for (int j = 0; j < first.length && j < second.length; j++) {
-                if (first[j].matches("\\d+") && second[j].matches("\\d+")) {
-                    if (Integer.parseInt(first[j]) > Integer.parseInt(second[j]))
-                        return 1;
-                    if (Integer.parseInt(first[j]) < Integer.parseInt(second[j]))
-                        return -1;
-                } else if (!first[j].equals(second[j]))
+                if (!first[j].equals(second[j])){
+                if (first[j].chars().allMatch(Character::isDigit) && second[j].chars().allMatch(Character::isDigit)) {
+                    return Integer.parseInt(first[j]) - Integer.parseInt(second[j]);
+                } else
                     return first[j].compareTo(second[j]);
+                }
             }
             return firstValue.compareTo(secondValue);
         };

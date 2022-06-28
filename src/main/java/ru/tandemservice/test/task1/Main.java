@@ -13,12 +13,15 @@ public class Main {
         array.add(new String[]{"1", null, "3"});
         array.add(new String[]{"4", "", "5"});
         array.add(new String[]{"1", "1233wwer1234das424", "3"});
+        array.add(new String[]{"1", "ssas1233wwer1234das424", "3"});
         array.add(new String[]{"1", "324ewqs", "3"});
         array.add(new String[]{"6", null, "8"});
+        array.add(new String[]{"7", "21", "9"});
         array.add(new String[]{"7", "", "9"});
+        array.add(new String[]{"7", "1sdcasq", "9"});
         array.add(new String[]{"1", "1233wweqqqr1234das424", "3"});
         array.add(new String[]{"1", "124ewqs", "3"});
-        array.add(new String[]{"1", "1233ewqs33", "3"});
+        array.add(new String[]{"1", "1233ewqs31134", "3"});
         System.out.println("before sort");
         for(String[] value : array) {
             System.out.println(Arrays.toString(value));
